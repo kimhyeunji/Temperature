@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//hello c###
+
+//githut check23
 
 namespace WindowsFormsApp1
 {
@@ -68,6 +71,8 @@ namespace WindowsFormsApp1
                 comport.Open();
                 comport.DiscardInBuffer();
                 btnConnect.Text = "Close";
+                // hello c#
+                //woww
 
 
             }
@@ -79,3 +84,5 @@ namespace WindowsFormsApp1
         }
     }
 }
+
+//변경 내용 작성 !!
