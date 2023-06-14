@@ -32,7 +32,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.cmbComport = new System.Windows.Forms.ToolStripComboBox();
             this.cmbBoardlate = new System.Windows.Forms.ToolStripComboBox();
-            this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,7 +39,36 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnConnect = new System.Windows.Forms.ToolStripButton();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rjtToggleButtono3 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
+            this.rjtToggleButtono1 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
+            this.fanToggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.toolStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -51,7 +79,7 @@
             this.btnConnect});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(405, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1110, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -65,6 +93,172 @@
             this.cmbBoardlate.Name = "cmbBoardlate";
             this.cmbBoardlate.Size = new System.Drawing.Size(121, 25);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(314, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(111, 12);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "체감온도(토양수분)";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(52, 169);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "온도";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(191, 169);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "습도";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 244);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "데이터";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(25, 272);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(178, 143);
+            this.textBox1.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(551, 38);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 12);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "제어센터";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(34, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(33, 16);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "fan";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.pictureBox4);
+            this.panel1.Controls.Add(this.fanToggle);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(553, 70);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(148, 126);
+            this.panel1.TabIndex = 17;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel2.Controls.Add(this.pictureBox5);
+            this.panel2.Controls.Add(this.rjtToggleButtono1);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Location = new System.Drawing.Point(725, 70);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(148, 126);
+            this.panel2.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(22, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 16);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "가습기";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel3.Controls.Add(this.pictureBox6);
+            this.panel3.Controls.Add(this.rjtToggleButtono3);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Location = new System.Drawing.Point(897, 70);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(148, 126);
+            this.panel3.TabIndex = 23;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(34, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(53, 16);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "AUTO";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.recovery;
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox6.Location = new System.Drawing.Point(36, 31);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(81, 80);
+            this.pictureBox6.TabIndex = 22;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.humidifier;
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox5.Location = new System.Drawing.Point(36, 31);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(81, 80);
+            this.pictureBox5.TabIndex = 22;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.soil_analysis;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(316, 70);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(90, 85);
+            this.pictureBox3.TabIndex = 21;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.humidity;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(165, 70);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(90, 85);
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.hot;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 70);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 85);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnConnect
             // 
             this.btnConnect.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -75,74 +269,125 @@
             this.btnConnect.Text = "Connect";
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // label4
+            // pictureBox4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "체감온도";
+            this.pictureBox4.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.fan;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox4.Location = new System.Drawing.Point(36, 31);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(81, 80);
+            this.pictureBox4.TabIndex = 22;
+            this.pictureBox4.TabStop = false;
             // 
-            // label3
+            // label9
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 120);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "온도";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(858, 542);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(156, 19);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "현재날짜와 시간";
             // 
-            // label2
+            // label10
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 81);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "습도";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(41, 38);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(50, 25);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "온도";
             // 
-            // label1
+            // label11
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(237, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "데이터";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(188, 38);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 25);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "습도";
             // 
-            // textBox1
+            // label12
             // 
-            this.textBox1.Location = new System.Drawing.Point(215, 78);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(178, 143);
-            this.textBox1.TabIndex = 10;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Location = new System.Drawing.Point(318, 38);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(88, 25);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "토양수분";
             // 
-            // label5
+            // button1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 12);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "label5";
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(323, 522);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 36);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Auto 설정";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label6
+            // rjtToggleButtono3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(215, 249);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(38, 12);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "label6";
+            this.rjtToggleButtono3.AutoSize = true;
+            this.rjtToggleButtono3.Location = new System.Drawing.Point(86, 3);
+            this.rjtToggleButtono3.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono3.Name = "rjtToggleButtono3";
+            this.rjtToggleButtono3.OffBackColor = System.Drawing.Color.Gray;
+            this.rjtToggleButtono3.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjtToggleButtono3.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.rjtToggleButtono3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjtToggleButtono3.Size = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono3.TabIndex = 15;
+            this.rjtToggleButtono3.UseVisualStyleBackColor = true;
+            // 
+            // rjtToggleButtono1
+            // 
+            this.rjtToggleButtono1.AutoSize = true;
+            this.rjtToggleButtono1.Location = new System.Drawing.Point(86, 3);
+            this.rjtToggleButtono1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono1.Name = "rjtToggleButtono1";
+            this.rjtToggleButtono1.OffBackColor = System.Drawing.Color.Gray;
+            this.rjtToggleButtono1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjtToggleButtono1.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.rjtToggleButtono1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjtToggleButtono1.Size = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono1.TabIndex = 15;
+            this.rjtToggleButtono1.UseVisualStyleBackColor = true;
+            // 
+            // fanToggle
+            // 
+            this.fanToggle.AutoSize = true;
+            this.fanToggle.Location = new System.Drawing.Point(86, 3);
+            this.fanToggle.MinimumSize = new System.Drawing.Size(45, 22);
+            this.fanToggle.Name = "fanToggle";
+            this.fanToggle.OffBackColor = System.Drawing.Color.Gray;
+            this.fanToggle.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.fanToggle.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.fanToggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.fanToggle.Size = new System.Drawing.Size(45, 22);
+            this.fanToggle.TabIndex = 15;
+            this.fanToggle.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 339);
-            this.Controls.Add(this.label6);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1110, 570);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
@@ -150,11 +395,24 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,7 +430,26 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
+        private RJControls.RJTToggleButtono fanToggle;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private RJControls.RJTToggleButtono rjtToggleButtono1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private RJControls.RJTToggleButtono rjtToggleButtono3;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button1;
     }
 }
 
