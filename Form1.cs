@@ -57,12 +57,13 @@ namespace WindowsFormsApp1
                 // 토글 체크 켜지면 1, 꺼지면 0 아두이노로 신호 보내기
                 if (fanToggle.Checked)
                 {
-                    comport.Write("1");
+                    comport.Write("3");
                 }
                 else
                 {
-                    comport.Write("0");
+                    comport.Write("4");
                 }
+                
 
                 conn.Open();
                 MySqlCommand msc = new MySqlCommand("INSERT INTO temphumi(humi, temp, hic, date, soil) VALUES(" + humi + ", " + temp + ", " + hic + ", '" + date + "', " + soil + ");", conn);
@@ -138,6 +139,19 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             Form Programinfo = new Autoset();
+            Programinfo.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("chrome.exe", "http://192.168.0.46:8081/");
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form Programinfo = new DataSet();
             Programinfo.ShowDialog();
         }
     }

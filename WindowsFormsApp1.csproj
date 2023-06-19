@@ -251,6 +251,12 @@
     <Compile Include="Autoset.Designer.cs">
       <DependentUpon>Autoset.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataSet.Designer.cs">
+      <DependentUpon>DataSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     </Compile>
     <EmbeddedResource Include="Autoset.resx">
       <DependentUpon>Autoset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataSet.resx">
+      <DependentUpon>DataSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
