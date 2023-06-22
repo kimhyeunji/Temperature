@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         string Conn = "Server=localhost;Database=humidata;Uid=root;Pwd=0000;";
+        string Conn2 = "Server=localhost;Database=mushroom;Uid=root;Pwd=0000;";
         SerialPort comport = new SerialPort();
         private delegate void SetTextDelegate(string getString);
         private MySqlConnection conn;
@@ -27,6 +28,39 @@ namespace WindowsFormsApp1
             InitializeComponent();
             comport.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
             conn = new MySqlConnection(Conn);
+        }
+
+        private void LoadMushroomDataFromMySQL()
+        {
+            try
+            {
+                using (MySqlConnection conn2 = new MySqlConnection(Conn2))
+                {
+                    conn2.Open();
+
+                    string query = "SELECT small, medium, large FROM pyogo ORDER BY date DESC LIMIT 1";
+                    MySqlCommand command = new MySqlCommand(query, conn2);
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int smallCount = Convert.ToInt32(reader["small"]);
+                            int mediumCount = Convert.ToInt32(reader["medium"]);
+                            int largeCount = Convert.ToInt32(reader["large"]);
+
+                            // Do something with the retrieved data
+                            // For example, update labels with the values
+                            label15.Text = smallCount.ToString();
+                            label16.Text = mediumCount.ToString();
+                            label17.Text = largeCount.ToString();
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error retrieving pyogo data from MySQL: " + ex.Message);
+            }
         }
 
         private void DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -59,11 +93,19 @@ namespace WindowsFormsApp1
                 {
                     comport.Write("3");
                 }
+                else if (watertoggle.Checked)
+                {
+                    comport.Write("1");
+                }
+                else if (!watertoggle.Checked)  // check if watertoggle is unchecked (off)
+                {
+                    comport.Write("2");
+                }
                 else
                 {
                     comport.Write("4");
                 }
-                
+
 
                 conn.Open();
                 MySqlCommand msc = new MySqlCommand("INSERT INTO temphumi(humi, temp, hic, date, soil) VALUES(" + humi + ", " + temp + ", " + hic + ", '" + date + "', " + soil + ");", conn);
@@ -72,6 +114,7 @@ namespace WindowsFormsApp1
                 // Retrieve the inserted 'num' value
                 msc = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
                 int num = Convert.ToInt32(msc.ExecuteScalar());
+
 
                 conn.Close();
 
@@ -103,6 +146,7 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             label9.Text = DateTime.Now.ToString();
+            LoadMushroomDataFromMySQL();
 
             cmbComport.Items.Clear();
             var portName = System.IO.Ports.SerialPort.GetPortNames();
@@ -144,8 +188,11 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("chrome.exe", "http://192.168.0.46:8081/");
-
+            Form2 videoform = new Form2();
+            videoform.StartPosition = FormStartPosition.Manual;
+            videoform.Location = new Point(220, 100);
+            videoform.BringToFront();
+            videoform.ShowDialog();
 
         }
 
@@ -154,5 +201,7 @@ namespace WindowsFormsApp1
             Form Programinfo = new DataSet();
             Programinfo.ShowDialog();
         }
+
+        
     }
 }

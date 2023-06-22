@@ -48,11 +48,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.fanToggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.watertoggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.rjtToggleButtono3 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -73,10 +76,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
-            this.rjtToggleButtono3 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
-            this.rjtToggleButtono1 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
-            this.fanToggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.button3 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -212,11 +216,25 @@
             this.pictureBox4.TabIndex = 22;
             this.pictureBox4.TabStop = false;
             // 
+            // fanToggle
+            // 
+            this.fanToggle.AutoSize = true;
+            this.fanToggle.Location = new System.Drawing.Point(183, 7);
+            this.fanToggle.MinimumSize = new System.Drawing.Size(45, 22);
+            this.fanToggle.Name = "fanToggle";
+            this.fanToggle.OffBackColor = System.Drawing.Color.Gray;
+            this.fanToggle.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.fanToggle.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.fanToggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.fanToggle.Size = new System.Drawing.Size(45, 22);
+            this.fanToggle.TabIndex = 15;
+            this.fanToggle.UseVisualStyleBackColor = true;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.Controls.Add(this.pictureBox5);
-            this.panel2.Controls.Add(this.rjtToggleButtono1);
+            this.panel2.Controls.Add(this.watertoggle);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Location = new System.Drawing.Point(336, 163);
             this.panel2.Name = "panel2";
@@ -232,6 +250,20 @@
             this.pictureBox5.Size = new System.Drawing.Size(225, 211);
             this.pictureBox5.TabIndex = 22;
             this.pictureBox5.TabStop = false;
+            // 
+            // watertoggle
+            // 
+            this.watertoggle.AutoSize = true;
+            this.watertoggle.Location = new System.Drawing.Point(193, 7);
+            this.watertoggle.MinimumSize = new System.Drawing.Size(45, 22);
+            this.watertoggle.Name = "watertoggle";
+            this.watertoggle.OffBackColor = System.Drawing.Color.Gray;
+            this.watertoggle.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.watertoggle.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.watertoggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.watertoggle.Size = new System.Drawing.Size(45, 22);
+            this.watertoggle.TabIndex = 15;
+            this.watertoggle.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -263,6 +295,20 @@
             this.pictureBox6.Size = new System.Drawing.Size(225, 211);
             this.pictureBox6.TabIndex = 22;
             this.pictureBox6.TabStop = false;
+            // 
+            // rjtToggleButtono3
+            // 
+            this.rjtToggleButtono3.AutoSize = true;
+            this.rjtToggleButtono3.Location = new System.Drawing.Point(193, 7);
+            this.rjtToggleButtono3.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono3.Name = "rjtToggleButtono3";
+            this.rjtToggleButtono3.OffBackColor = System.Drawing.Color.Gray;
+            this.rjtToggleButtono3.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjtToggleButtono3.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.rjtToggleButtono3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjtToggleButtono3.Size = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono3.TabIndex = 15;
+            this.rjtToggleButtono3.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -347,7 +393,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(783, 477);
+            this.button1.Location = new System.Drawing.Point(981, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 36);
             this.button1.TabIndex = 28;
@@ -438,11 +484,12 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(783, 519);
+            this.button2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Location = new System.Drawing.Point(981, 358);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 34);
             this.button2.TabIndex = 32;
-            this.button2.Text = "서버연결";
+            this.button2.Text = "CCTV";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -465,51 +512,10 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "FutureShroom";
             // 
-            // rjtToggleButtono3
-            // 
-            this.rjtToggleButtono3.AutoSize = true;
-            this.rjtToggleButtono3.Location = new System.Drawing.Point(193, 7);
-            this.rjtToggleButtono3.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjtToggleButtono3.Name = "rjtToggleButtono3";
-            this.rjtToggleButtono3.OffBackColor = System.Drawing.Color.Gray;
-            this.rjtToggleButtono3.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjtToggleButtono3.OnBackColor = System.Drawing.Color.ForestGreen;
-            this.rjtToggleButtono3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjtToggleButtono3.Size = new System.Drawing.Size(45, 22);
-            this.rjtToggleButtono3.TabIndex = 15;
-            this.rjtToggleButtono3.UseVisualStyleBackColor = true;
-            // 
-            // rjtToggleButtono1
-            // 
-            this.rjtToggleButtono1.AutoSize = true;
-            this.rjtToggleButtono1.Location = new System.Drawing.Point(193, 7);
-            this.rjtToggleButtono1.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjtToggleButtono1.Name = "rjtToggleButtono1";
-            this.rjtToggleButtono1.OffBackColor = System.Drawing.Color.Gray;
-            this.rjtToggleButtono1.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjtToggleButtono1.OnBackColor = System.Drawing.Color.ForestGreen;
-            this.rjtToggleButtono1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjtToggleButtono1.Size = new System.Drawing.Size(45, 22);
-            this.rjtToggleButtono1.TabIndex = 15;
-            this.rjtToggleButtono1.UseVisualStyleBackColor = true;
-            // 
-            // fanToggle
-            // 
-            this.fanToggle.AutoSize = true;
-            this.fanToggle.Location = new System.Drawing.Point(183, 7);
-            this.fanToggle.MinimumSize = new System.Drawing.Size(45, 22);
-            this.fanToggle.Name = "fanToggle";
-            this.fanToggle.OffBackColor = System.Drawing.Color.Gray;
-            this.fanToggle.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.fanToggle.OnBackColor = System.Drawing.Color.ForestGreen;
-            this.fanToggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.fanToggle.Size = new System.Drawing.Size(45, 22);
-            this.fanToggle.TabIndex = 15;
-            this.fanToggle.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(783, 559);
+            this.button3.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button3.Location = new System.Drawing.Point(981, 398);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(98, 34);
             this.button3.TabIndex = 34;
@@ -517,12 +523,56 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(27, 491);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(148, 45);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "표고버섯";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Location = new System.Drawing.Point(92, 825);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(31, 25);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "소";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label16.Location = new System.Drawing.Point(331, 825);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(31, 25);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "중";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label17.Location = new System.Drawing.Point(575, 825);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(31, 25);
+            this.label17.TabIndex = 38;
+            this.label17.Text = "대";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.button2);
@@ -596,7 +646,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private RJControls.RJTToggleButtono rjtToggleButtono1;
+        private RJControls.RJTToggleButtono watertoggle;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox6;
@@ -619,6 +669,10 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
     }
 }
 
