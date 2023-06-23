@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -16,7 +17,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        string Conn = "Server=localhost;Database=humidata;Uid=root;Pwd=0000;";
+        //string Conn = "Server=localhost;Database=humidata;Uid=root;Pwd=0000;";
         string Conn2 = "Server=localhost;Database=mushroom;Uid=root;Pwd=0000;";
         SerialPort comport = new SerialPort();
         private delegate void SetTextDelegate(string getString);
@@ -27,7 +28,84 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             comport.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
-            conn = new MySqlConnection(Conn);
+            //conn = new MySqlConnection(Conn);
+        }
+
+        private void LoadhumidataFromMySQL()
+        {
+            string Conn = "Server=localhost;Database=humidata;Uid=root;Pwd=0000;";
+
+            int lastNum = 0; // The 'num' value of the last row we fetched
+
+            while (true)
+            {
+                using (MySqlConnection conn = new MySqlConnection(Conn))
+                {
+                    conn.Open();
+
+                    //리스트뷰에 데이터 추가 
+                    string sql = "SELECT * FROM temphumi WHERE num > @lastNum ORDER BY num DESC LIMIT 20";
+                    MySqlCommand command = new MySqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@lastNum", lastNum);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int num = reader.IsDBNull(reader.GetOrdinal("num")) ? 0 : reader.GetInt32("num");
+                            double humi = reader.IsDBNull(reader.GetOrdinal("humi")) ? 0.0 : reader.GetDouble("humi");
+                            double temp = reader.IsDBNull(reader.GetOrdinal("temp")) ? 0.0 : reader.GetDouble("temp");
+                            string date = reader.IsDBNull(reader.GetOrdinal("date")) ? string.Empty : reader.GetString("date");
+                            int soil = reader.IsDBNull(reader.GetOrdinal("soil")) ? 0 : reader.GetInt32("soil");
+
+                            Console.WriteLine($"num: {num}, humi: {humi}, temp: {temp}, date: {date}, soil: {soil}");
+
+                            lastNum = num; // 마지막으로 읽은 num을 lastnum에 저장. 다음쿼리에서 이값보다 큰행만 가져오기 위해 
+
+                            // 업데이트 
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                label3.Text = temp.ToString() + "°C";
+                                label2.Text = humi.ToString() + "%";
+                                label4.Text = soil.ToString() + "%"; // soil is now a double
+
+                                // 리스트뷰의 마지막 항목 제거(리스트뷰 항복 20개 유지하기 위해서)
+                                ListViewItem item = new ListViewItem(new string[] { num.ToString(), humi.ToString(), temp.ToString(), soil.ToString(),date });
+                                listView1.Items.Insert(0, item); // Add the item to the top of the list
+
+                                // 리스트뷰 항목수가 20개 초과하는 동안 루프 실행 
+                                while (listView1.Items.Count > 20)
+                                {
+                                    listView1.Items.RemoveAt(listView1.Items.Count - 1); // Remove the last item
+                                }
+                                // Add data to chart
+                                chart1.Series[0].Points.AddXY(date, Convert.ToDouble(humi));
+                                chart1.Series[1].Points.AddXY(date, Convert.ToDouble(temp));
+                                chart1.Series[2].Points.AddXY(date, Convert.ToDouble(soil));
+                                dataCount++;
+
+                                // Keep only the most recent 20 points
+                                while (chart1.Series[0].Points.Count > 20)
+                                {
+                                    chart1.Series[0].Points.RemoveAt(0);
+                                }
+                                while (chart1.Series[1].Points.Count > 20)
+                                {
+                                    chart1.Series[1].Points.RemoveAt(0);
+                                }
+                                while (chart1.Series[2].Points.Count > 20)
+                                {
+                                    chart1.Series[2].Points.RemoveAt(0);
+                                }
+                            });
+
+
+                        }
+                    }
+                }
+
+                Thread.Sleep(2000); // Delay for 2 seconds
+            }
         }
 
         private void LoadMushroomDataFromMySQL()
@@ -53,6 +131,9 @@ namespace WindowsFormsApp1
                             label15.Text = smallCount.ToString();
                             label16.Text = mediumCount.ToString();
                             label17.Text = largeCount.ToString();
+
+                            
+
                         }
                     }
                 }
@@ -72,21 +153,7 @@ namespace WindowsFormsApp1
         // 아두이노로부터 데이터를 받는 부분
         private void SerialReceived(string inString)
         {
-            textBox1.AppendText(inString + "\r\n");
-            string[] data = inString.Split(',');
-
-            if (data.Length >= 4)
-            {
-                string humi = data[0];
-                string temp = data[1];
-                string hic = data[2];
-                string soil = data[3];
-
-                label2.Text = " " + humi + "%";
-                label3.Text = " " + temp + "°C";
-                label4.Text = " " + soil + "%";
-
-                string date = DateTime.Now.ToString();
+        
 
                 // 토글 체크 켜지면 1, 꺼지면 0 아두이노로 신호 보내기
                 if (fanToggle.Checked)
@@ -108,39 +175,11 @@ namespace WindowsFormsApp1
 
 
                 conn.Open();
-                MySqlCommand msc = new MySqlCommand("INSERT INTO temphumi(humi, temp, hic, date, soil) VALUES(" + humi + ", " + temp + ", " + hic + ", '" + date + "', " + soil + ");", conn);
-                msc.ExecuteNonQuery();
-
-                // Retrieve the inserted 'num' value
-                msc = new MySqlCommand("SELECT LAST_INSERT_ID();", conn);
-                int num = Convert.ToInt32(msc.ExecuteScalar());
 
 
                 conn.Close();
 
-                // 리스트뷰에 데이터 추가
-                ListViewItem lvi = new ListViewItem();
-
-                lvi.Text = num.ToString();
-                lvi.SubItems.Add(humi);
-                lvi.SubItems.Add(temp);
-                lvi.SubItems.Add(date);
-                lvi.SubItems.Add(soil);
-
-                listView1.Items.Add(lvi);
-
-                // 그래프에 데이터 추가
-                chart1.Series[0].Points.AddXY(date, double.Parse(humi));
-                chart1.Series[1].Points.AddXY(date, double.Parse(temp));
-                chart1.Series[2].Points.AddXY(date, double.Parse(soil));
-
-                dataCount++;
-            }
-            else
-            {
-                // 데이터가 올바르게 파싱되지 않았을 경우 에러 처리 등을 수행할 수 있습니다.
-                // 예를 들어, 데이터 포맷이 맞지 않아 데이터를 무시하거나, 에러 로그를 출력할 수 있습니다.
-            }
+                
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -157,6 +196,11 @@ namespace WindowsFormsApp1
             cmbBoardlate.Items.Add("9600");
             cmbBoardlate.Items.Add("115200");
             cmbBoardlate.SelectedIndex = 0;
+
+            //mysql humidata 가져오기위한것 
+            Thread thread = new Thread(new ThreadStart(LoadhumidataFromMySQL));
+            thread.Start();
+
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -202,6 +246,6 @@ namespace WindowsFormsApp1
             Programinfo.ShowDialog();
         }
 
-        
+
     }
 }

@@ -48,14 +48,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.fanToggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.watertoggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.rjtToggleButtono3 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -81,6 +78,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.rjtToggleButtono3 = new WindowsFormsApp1.RJControls.RJTToggleButtono();
+            this.watertoggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
+            this.fanToggle = new WindowsFormsApp1.RJControls.RJTToggleButtono();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -216,20 +216,6 @@
             this.pictureBox4.TabIndex = 22;
             this.pictureBox4.TabStop = false;
             // 
-            // fanToggle
-            // 
-            this.fanToggle.AutoSize = true;
-            this.fanToggle.Location = new System.Drawing.Point(183, 7);
-            this.fanToggle.MinimumSize = new System.Drawing.Size(45, 22);
-            this.fanToggle.Name = "fanToggle";
-            this.fanToggle.OffBackColor = System.Drawing.Color.Gray;
-            this.fanToggle.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.fanToggle.OnBackColor = System.Drawing.Color.ForestGreen;
-            this.fanToggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.fanToggle.Size = new System.Drawing.Size(45, 22);
-            this.fanToggle.TabIndex = 15;
-            this.fanToggle.UseVisualStyleBackColor = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -250,20 +236,6 @@
             this.pictureBox5.Size = new System.Drawing.Size(225, 211);
             this.pictureBox5.TabIndex = 22;
             this.pictureBox5.TabStop = false;
-            // 
-            // watertoggle
-            // 
-            this.watertoggle.AutoSize = true;
-            this.watertoggle.Location = new System.Drawing.Point(193, 7);
-            this.watertoggle.MinimumSize = new System.Drawing.Size(45, 22);
-            this.watertoggle.Name = "watertoggle";
-            this.watertoggle.OffBackColor = System.Drawing.Color.Gray;
-            this.watertoggle.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.watertoggle.OnBackColor = System.Drawing.Color.ForestGreen;
-            this.watertoggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.watertoggle.Size = new System.Drawing.Size(45, 22);
-            this.watertoggle.TabIndex = 15;
-            this.watertoggle.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -295,20 +267,6 @@
             this.pictureBox6.Size = new System.Drawing.Size(225, 211);
             this.pictureBox6.TabIndex = 22;
             this.pictureBox6.TabStop = false;
-            // 
-            // rjtToggleButtono3
-            // 
-            this.rjtToggleButtono3.AutoSize = true;
-            this.rjtToggleButtono3.Location = new System.Drawing.Point(193, 7);
-            this.rjtToggleButtono3.MinimumSize = new System.Drawing.Size(45, 22);
-            this.rjtToggleButtono3.Name = "rjtToggleButtono3";
-            this.rjtToggleButtono3.OffBackColor = System.Drawing.Color.Gray;
-            this.rjtToggleButtono3.OffToggleColor = System.Drawing.Color.Gainsboro;
-            this.rjtToggleButtono3.OnBackColor = System.Drawing.Color.ForestGreen;
-            this.rjtToggleButtono3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.rjtToggleButtono3.Size = new System.Drawing.Size(45, 22);
-            this.rjtToggleButtono3.TabIndex = 15;
-            this.rjtToggleButtono3.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -465,13 +423,13 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "시간";
-            this.columnHeader5.Width = 205;
+            this.columnHeader5.Text = "토양수분";
+            this.columnHeader5.Width = 108;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "토양수분";
-            this.columnHeader6.Width = 95;
+            this.columnHeader6.Text = "시간";
+            this.columnHeader6.Width = 125;
             // 
             // panel4
             // 
@@ -562,6 +520,48 @@
             this.label17.Size = new System.Drawing.Size(31, 25);
             this.label17.TabIndex = 38;
             this.label17.Text = "대";
+            // 
+            // rjtToggleButtono3
+            // 
+            this.rjtToggleButtono3.AutoSize = true;
+            this.rjtToggleButtono3.Location = new System.Drawing.Point(193, 7);
+            this.rjtToggleButtono3.MinimumSize = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono3.Name = "rjtToggleButtono3";
+            this.rjtToggleButtono3.OffBackColor = System.Drawing.Color.Gray;
+            this.rjtToggleButtono3.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.rjtToggleButtono3.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.rjtToggleButtono3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.rjtToggleButtono3.Size = new System.Drawing.Size(45, 22);
+            this.rjtToggleButtono3.TabIndex = 15;
+            this.rjtToggleButtono3.UseVisualStyleBackColor = true;
+            // 
+            // watertoggle
+            // 
+            this.watertoggle.AutoSize = true;
+            this.watertoggle.Location = new System.Drawing.Point(193, 7);
+            this.watertoggle.MinimumSize = new System.Drawing.Size(45, 22);
+            this.watertoggle.Name = "watertoggle";
+            this.watertoggle.OffBackColor = System.Drawing.Color.Gray;
+            this.watertoggle.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.watertoggle.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.watertoggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.watertoggle.Size = new System.Drawing.Size(45, 22);
+            this.watertoggle.TabIndex = 15;
+            this.watertoggle.UseVisualStyleBackColor = true;
+            // 
+            // fanToggle
+            // 
+            this.fanToggle.AutoSize = true;
+            this.fanToggle.Location = new System.Drawing.Point(183, 7);
+            this.fanToggle.MinimumSize = new System.Drawing.Size(45, 22);
+            this.fanToggle.Name = "fanToggle";
+            this.fanToggle.OffBackColor = System.Drawing.Color.Gray;
+            this.fanToggle.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.fanToggle.OnBackColor = System.Drawing.Color.ForestGreen;
+            this.fanToggle.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.fanToggle.Size = new System.Drawing.Size(45, 22);
+            this.fanToggle.TabIndex = 15;
+            this.fanToggle.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
