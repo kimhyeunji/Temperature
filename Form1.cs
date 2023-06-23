@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -17,19 +18,87 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        //string Conn = "Server=localhost;Database=humidata;Uid=root;Pwd=0000;";
+
         string Conn2 = "Server=localhost;Database=mushroom;Uid=root;Pwd=0000;";
         SerialPort comport = new SerialPort();
         private delegate void SetTextDelegate(string getString);
-        private MySqlConnection conn;
+        //private MySqlConnection conn;
         private int dataCount = 0;
+
+
+
 
         public Form1()
         {
             InitializeComponent();
-            comport.DataReceived += new SerialDataReceivedEventHandler(DataReceived);
+            comport.DataReceived += new SerialDataReceivedEventHandler(Datagived);
+
+            fanToggle.CheckedChanged += fanToggle_CheckedChanged;
+            watertoggle.CheckedChanged += watertoggle_CheckedChanged;
+            mtToggle.CheckedChanged += mtToggle_CheckedChanged;
+
             //conn = new MySqlConnection(Conn);
         }
+
+        private void Datagived(object sender, SerialDataReceivedEventArgs e)
+        {
+            string rxd = comport.ReadTo("\n");
+            this.BeginInvoke(new SetTextDelegate(Serialgived), new object[] { rxd });
+        }
+
+        private void Serialgived(string inString)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (inString == "@F")
+                {
+                    fanToggle.Checked = true;
+                }
+                else if (inString == "@f")
+                {
+                    fanToggle.Checked = false;
+                }
+                else if (inString == "@G")
+                {
+                    watertoggle.Checked = true;
+                }
+                else if (inString == "@g")
+                {
+                    watertoggle.Checked = false;
+                }
+                else if (inString == "@M")
+                {
+                    mtToggle.Checked = true;
+                }
+                else if (inString == "@m")
+                {
+                    mtToggle.Checked = false;
+                }
+            });
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label9.Text = DateTime.Now.ToString();
+            LoadMushroomDataFromMySQL();
+
+            cmbComport.Items.Clear();
+            var portName = System.IO.Ports.SerialPort.GetPortNames();
+            cmbComport.Items.AddRange(portName);
+            cmbComport.SelectedIndex = cmbComport.Items.Count - 1;
+
+            cmbBoardlate.Items.Clear();
+            cmbBoardlate.Items.Add("9600");
+            cmbBoardlate.Items.Add("115200");
+            cmbBoardlate.SelectedIndex = 0;
+
+            //mysql humidata 가져오기위한것 
+            Thread thread = new Thread(new ThreadStart(LoadhumidataFromMySQL));
+            thread.Start();
+
+        }
+
+       
 
         private void LoadhumidataFromMySQL()
         {
@@ -61,6 +130,8 @@ namespace WindowsFormsApp1
                             Console.WriteLine($"num: {num}, humi: {humi}, temp: {temp}, date: {date}, soil: {soil}");
 
                             lastNum = num; // 마지막으로 읽은 num을 lastnum에 저장. 다음쿼리에서 이값보다 큰행만 가져오기 위해 
+
+
 
                             // 업데이트 
                             this.Invoke((MethodInvoker)delegate
@@ -102,14 +173,17 @@ namespace WindowsFormsApp1
 
                         }
                     }
+                    conn.Close();
                 }
 
-                Thread.Sleep(2000); // Delay for 2 seconds
+                //Thread.Sleep(2000); // Delay for 2 seconds
+                Task.Delay(2000);
             }
         }
 
         private void LoadMushroomDataFromMySQL()
         {
+            //버섯 데이터 가져오기 
             try
             {
                 using (MySqlConnection conn2 = new MySqlConnection(Conn2))
@@ -126,13 +200,22 @@ namespace WindowsFormsApp1
                             int mediumCount = Convert.ToInt32(reader["medium"]);
                             int largeCount = Convert.ToInt32(reader["large"]);
 
-                            // Do something with the retrieved data
-                            // For example, update labels with the values
+                            // 데이터 가지고 작업
                             label15.Text = smallCount.ToString();
                             label16.Text = mediumCount.ToString();
                             label17.Text = largeCount.ToString();
 
-                            
+                            //막대그래프 만들기 
+                            chart3.Series.Clear();
+                            Series series = new Series("Mushroom Counts");
+                            series.ChartType = SeriesChartType.Bar;
+
+                            series.Points.AddXY("Small", smallCount);
+                            series.Points.AddXY("Medium", mediumCount);
+                            series.Points.AddXY("Large", largeCount);
+
+                            chart3.Series.Add(series);
+
 
                         }
                     }
@@ -144,64 +227,13 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            string rxd = comport.ReadTo("\n");
-            this.BeginInvoke(new SetTextDelegate(SerialReceived), new object[] { rxd });
-        }
 
-        // 아두이노로부터 데이터를 받는 부분
-        private void SerialReceived(string inString)
-        {
+
+
+
         
 
-                // 토글 체크 켜지면 1, 꺼지면 0 아두이노로 신호 보내기
-                if (fanToggle.Checked)
-                {
-                    comport.Write("3");
-                }
-                else if (watertoggle.Checked)
-                {
-                    comport.Write("1");
-                }
-                else if (!watertoggle.Checked)  // check if watertoggle is unchecked (off)
-                {
-                    comport.Write("2");
-                }
-                else
-                {
-                    comport.Write("4");
-                }
-
-
-                conn.Open();
-
-
-                conn.Close();
-
-                
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            label9.Text = DateTime.Now.ToString();
-            LoadMushroomDataFromMySQL();
-
-            cmbComport.Items.Clear();
-            var portName = System.IO.Ports.SerialPort.GetPortNames();
-            cmbComport.Items.AddRange(portName);
-            cmbComport.SelectedIndex = cmbComport.Items.Count - 1;
-
-            cmbBoardlate.Items.Clear();
-            cmbBoardlate.Items.Add("9600");
-            cmbBoardlate.Items.Add("115200");
-            cmbBoardlate.SelectedIndex = 0;
-
-            //mysql humidata 가져오기위한것 
-            Thread thread = new Thread(new ThreadStart(LoadhumidataFromMySQL));
-            thread.Start();
-
-        }
+       
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -246,6 +278,45 @@ namespace WindowsFormsApp1
             Programinfo.ShowDialog();
         }
 
+        //아두이노 제어부분 
 
+        private void fanToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (fanToggle.Checked)
+            {
+                comport.Write("@F");
+            }
+            else
+            {
+                comport.Write("@f");
+            }
+        }
+
+        private void watertoggle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (watertoggle.Checked)
+            {
+                comport.Write("@G");
+            }
+            else
+            {
+                comport.Write("@g");
+            }
+
+        }
+
+        private void mtToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mtToggle.Checked)
+            {
+                comport.Write("@M");
+            }
+            else
+            {
+                comport.Write("@m");
+            }
+
+
+        }
     }
 }
