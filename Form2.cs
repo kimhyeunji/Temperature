@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     public partial class Form2 : Form
     {
 
-        private string videoUrl = "http://192.168.0.46:8081/capture"; // ESP32 카메라의 IP 주소
+        private string videoUrl = "http://192.168.0.46:8082/capture"; // ESP32 카메라의 IP 주소
         private bool isStreaming = false;
         public Form2()
         {

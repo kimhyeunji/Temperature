@@ -214,6 +214,8 @@ namespace WindowsFormsApp1
                             series.Points.AddXY("Medium", mediumCount);
                             series.Points.AddXY("Large", largeCount);
 
+                            
+
                             chart3.Series.Add(series);
 
 
